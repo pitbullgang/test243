@@ -29,10 +29,7 @@ html, body {
   font-family: var(--font);
   color: var(--text-color);
   position: relative;
-  /* ลบพื้นหลังเก่าออก */
 }
-
-/* 🗑️ ลบ: Background Image เก่า (body::before) ออก */
 
 /* Light Glow Bottom */
 body::after {
@@ -47,7 +44,7 @@ body::after {
   z-index: 1;
 }
 
-/* 🎥 สไตล์สำหรับวิดีโอพื้นหลัง (เต็มจอ, ขาวดำ, สว่าง 60%) */
+/* 🎥 สไตล์สำหรับวิดีโอพื้นหลัง (Dark Theme) */
 #backgroundVideo {
   position: fixed; 
   top: 50%;
@@ -57,11 +54,20 @@ body::after {
   width: auto;
   height: auto;
   transform: translateX(-50%) translateY(-50%);
-  z-index: -100; /* ให้อยู่ด้านหลังสุด */
-  object-fit: cover; /* ทำให้เต็มจอโดยรักษาสัดส่วน */
-  /* กำหนดฟิลเตอร์: ขาวดำ 100% และความสว่าง 60% */
+  z-index: -100;
+  object-fit: cover;
+  /* กำหนดฟิลเตอร์สำหรับ Dark Theme: ขาวดำ 100% และความสว่าง 60% */
   filter: grayscale(100%) brightness(0.6); 
 }
+
+/* ✨✨ ส่วนที่เพิ่ม: ปรับวิดีโอเมื่ออยู่ใน Light Theme ✨✨ */
+.light-theme #backgroundVideo {
+    /* ล้างฟิลเตอร์ขาวดำและความมืด เพื่อให้วิดีโอมีสีและสว่างขึ้น */
+    filter: none; 
+    /* อาจเพิ่มความโปร่งใสเล็กน้อยเพื่อให้วิดีโอไม่เด่นเกินไปในพื้นหลังสว่าง */
+    opacity: 0.7; 
+}
+
 
 /* Theme Toggle */
 .theme-toggle {
@@ -129,61 +135,56 @@ body::after {
   z-index: 5;
 }
 
-/* ❌ ลบ @keyframes moveGradient ออก */
-/* ❌ ลบ .gradient-text ออก */
-
-/* ✨ สไตล์สำหรับหัวข้อใหม่ (แทนที่ .gradient-text เดิม) */
+/* ✨ สไตล์สำหรับหัวข้อใหม่ */
 .title h2 {
-  font-size: 3.5rem; /* ขยายขนาด */
-  font-weight: 700;
-  color: #ffffff;
-  /* เอฟเฟกต์เรืองแสง */
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.2);
-  transition: all 0.5s ease;
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.2);
+  transition: all 0.5s ease;
 }
 
 .title p {
-  margin-top: 15px; 
-  font-size: 1.4rem; 
-  opacity: 0.95;
-  color: #c9c9c9;
-  letter-spacing: 5px; 
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+  margin-top: 15px; 
+  font-size: 1.4rem; 
+  opacity: 0.95;
+  color: #c9c9c9;
+  letter-spacing: 5px; 
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
 }
 
 .title:hover h2 {
-    transform: scale(1.02);
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.4);
+    transform: scale(1.02);
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.4);
 }
 
 /* Button - Glass/Neon Style */
-/* ❌ ลบสไตล์ button เก่าออกทั้งหมด */
 button {
   margin-top: 50px;
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 18px 45px; 
-  font-size: 1.25rem; 
-  
-  /* Glassmorphism Effect */
-  background: rgba(255, 255, 255, 0.05); 
-  backdrop-filter: blur(10px); 
+  padding: 18px 45px; 
+  font-size: 1.25rem; 
+  
+  /* Glassmorphism Effect */
+  background: rgba(255, 255, 255, 0.05); 
+  backdrop-filter: blur(10px); 
 
   color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.2); 
+  border: 1px solid rgba(255, 255, 255, 0.2); 
   border-radius: 40px;
   cursor: pointer;
-  
-  /* Shadow and inner shine */
+  
+  /* Shadow and inner shine */
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.1);
 
-  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); 
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); 
 }
 
 button:hover {
-  transform: translateY(-5px) scale(1.05); 
-  box-shadow: 0 8px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 255, 255, 0.3); /* เงาสีฟ้า/ขาวนีออน */
+  transform: translateY(-5px) scale(1.05); 
+  box-shadow: 0 8px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 255, 255, 0.3);
   background: rgba(255, 255, 255, 0.1);
 }
 
@@ -191,9 +192,9 @@ button svg {
   stroke: #ffffff;
   transition: transform 0.3s ease, stroke 0.4s ease;
 }
-button:hover svg { 
-    transform: rotate(90deg); 
-    stroke: #00ffff; 
+button:hover svg { 
+    transform: rotate(90deg); 
+    stroke: #00ffff; 
 }
 
 /* Circle Follow */
@@ -216,4 +217,14 @@ footer {
   bottom: 15px;
   width: 100%;
   text-align: center;
-  color: rgba(
+  color: rgba(255,255,255,0.5); /* แก้ไขโค้ดที่ขาดหายไป */
+  font-size: 0.9rem;
+  z-index: 5;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .title h2 { font-size: 1.8rem; }
+  button { padding: 14px 28px; font-size: 1rem; }
+  #circle { width: 180px; height: 180px; filter: blur(50px); }
+}
