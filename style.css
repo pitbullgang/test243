@@ -29,22 +29,10 @@ html, body {
   font-family: var(--font);
   color: var(--text-color);
   position: relative;
-  /* 🗑️ ลบ: Background gradient ออก เพราะต้องการใช้วิดีโอแทน */
-  /* background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end)); */
+  /* ลบพื้นหลังเก่าออก */
 }
 
 /* 🗑️ ลบ: Background Image เก่า (body::before) ออก */
-/*
-body::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: url("https://dekbangtlez.space/image/background.png") center/cover no-repeat;
-  opacity: 0.12;
-  z-index: 0;
-}
-*/
 
 /* Light Glow Bottom */
 body::after {
@@ -59,20 +47,20 @@ body::after {
   z-index: 1;
 }
 
-/* 🎥 เพิ่มสไตล์สำหรับวิดีโอพื้นหลัง (เต็มจอ, ขาวดำ, สว่าง 60%) */
+/* 🎥 สไตล์สำหรับวิดีโอพื้นหลัง (เต็มจอ, ขาวดำ, สว่าง 60%) */
 #backgroundVideo {
-  position: fixed; 
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  transform: translateX(-50%) translateY(-50%);
-  z-index: -100; /* ให้อยู่ด้านหลังสุด */
-  object-fit: cover; /* ทำให้เต็มจอโดยรักษาสัดส่วน */
-  /* กำหนดฟิลเตอร์: ขาวดำ 100% และความสว่าง 60% */
-  filter: grayscale(100%) brightness(0.6); 
+  position: fixed; 
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: -100; /* ให้อยู่ด้านหลังสุด */
+  object-fit: cover; /* ทำให้เต็มจอโดยรักษาสัดส่วน */
+  /* กำหนดฟิลเตอร์: ขาวดำ 100% และความสว่าง 60% */
+  filter: grayscale(100%) brightness(0.6); 
 }
 
 /* Theme Toggle */
@@ -111,8 +99,7 @@ body::after {
   position: fixed;
   width: 100%;
   height: 100%;
-  /* 💡 ใช้สีดำ (#000) สำหรับหน้า Loading เพื่อให้เข้ากับวิดีโอ */
-  background: #000; 
+  background: #000; 
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -142,57 +129,72 @@ body::after {
   z-index: 5;
 }
 
-/* Gradient Text Animation */
-.gradient-text {
-  background: linear-gradient(270deg, #ffffff, #999, #ffffff);
-  background-size: 300% 300%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: moveGradient 4s ease infinite;
-}
-@keyframes moveGradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
+/* ❌ ลบ @keyframes moveGradient ออก */
+/* ❌ ลบ .gradient-text ออก */
 
+/* ✨ สไตล์สำหรับหัวข้อใหม่ (แทนที่ .gradient-text เดิม) */
 .title h2 {
-  font-size: 2.8rem;
-  font-weight: 700;
-}
-.title p {
-  margin-top: 8px;
-  font-size: 1.2rem;
-  opacity: 0.85;
+  font-size: 3.5rem; /* ขยายขนาด */
+  font-weight: 700;
+  color: #ffffff;
+  /* เอฟเฟกต์เรืองแสง */
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.2);
+  transition: all 0.5s ease;
 }
 
-/* Button */
+.title p {
+  margin-top: 15px; 
+  font-size: 1.4rem; 
+  opacity: 0.95;
+  color: #c9c9c9;
+  letter-spacing: 5px; 
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+}
+
+.title:hover h2 {
+    transform: scale(1.02);
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.4);
+}
+
+/* Button - Glass/Neon Style */
+/* ❌ ลบสไตล์ button เก่าออกทั้งหมด */
 button {
-  margin-top: 40px;
+  margin-top: 50px;
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 16px 40px;
-  font-size: 1.2rem;
-  background: linear-gradient(135deg, var(--button-gradient-start), var(--button-gradient-end));
-  color: var(--button-text-color);
-  border: 1px solid rgba(255,255,255,0.1);
+  padding: 18px 45px; 
+  font-size: 1.25rem; 
+  
+  /* Glassmorphism Effect */
+  background: rgba(255, 255, 255, 0.05); 
+  backdrop-filter: blur(10px); 
+
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2); 
   border-radius: 40px;
   cursor: pointer;
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.15), 0 0 20px rgba(0,0,0,0.7);
-  transition: all 0.3s ease;
-  backdrop-filter: blur(6px);
+  
+  /* Shadow and inner shine */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.1);
+
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); 
 }
+
 button:hover {
-  transform: translateY(-2px);
-  background: linear-gradient(135deg, #333, #555);
-  box-shadow: 0 0 25px rgba(255,255,255,0.1);
+  transform: translateY(-5px) scale(1.05); 
+  box-shadow: 0 8px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 255, 255, 0.3); /* เงาสีฟ้า/ขาวนีออน */
+  background: rgba(255, 255, 255, 0.1);
 }
+
 button svg {
-  stroke: var(--button-text-color);
-  transition: transform 0.3s ease;
+  stroke: #ffffff;
+  transition: transform 0.3s ease, stroke 0.4s ease;
 }
-button:hover svg { transform: rotate(90deg); }
+button:hover svg { 
+    transform: rotate(90deg); 
+    stroke: #00ffff; 
+}
 
 /* Circle Follow */
 #circle {
@@ -214,14 +216,4 @@ footer {
   bottom: 15px;
   width: 100%;
   text-align: center;
-  color: rgba(255,255,255,0.5);
-  font-size: 0.9rem;
-  z-index: 5;
-}
-
-/* Responsive */
-@media (max-width: 600px) {
-  .title h2 { font-size: 1.8rem; }
-  button { padding: 14px 28px; font-size: 1rem; }
-  #circle { width: 180px; height: 180px; filter: blur(50px); }
-}
+  color: rgba(
