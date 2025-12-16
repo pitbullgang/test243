@@ -1,7 +1,7 @@
 :root {
   --text-color: #ffffff;
   --font: 'Kanit', sans-serif;
-  --circle-color: rgba(255, 255, 255, 0.08);
+  --circle-color: rgba(255, 255, 255, 0.1);
 }
 
 .light-theme {
@@ -14,30 +14,30 @@
 body, html {
   width: 100%;
   height: 100%;
-  overflow: hidden; /* ห้ามมีแถบเลื่อน */
+  overflow: hidden; /* ป้องกันแถบเลื่อน */
   font-family: var(--font);
-  background-color: #000; /* สีพื้นฐานกรณีวิดีโอไม่โหลด */
+  background-color: #000;
 }
 
-/* 🎥 วิดีโอพื้นหลังแบบเต็มหน้าจอ */
+/* 🎥 แก้ไขจุดนี้: วิดีโอเต็มจอ 100% */
 #backgroundVideo {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  object-fit: cover; /* บังคับวิดีโอเต็มจอโดยไม่เสียสัดส่วน */
-  z-index: -1;
+  object-fit: cover; /* บังคับวิดีโอให้คลุมพื้นที่ทั้งหมดเหมือน Wallpaper */
+  z-index: -1; /* ส่งไปไว้หลังสุด */
   filter: grayscale(100%) brightness(0.5); /* สไตล์ Dark Mode */
-  transition: all 0.5s ease;
+  pointer-events: none;
 }
 
 .light-theme #backgroundVideo {
   filter: grayscale(0%) brightness(1.1);
-  opacity: 0.5;
+  opacity: 0.4;
 }
 
-/* Container หลัก */
+/* การจัดวาง Content */
 .main-content {
   position: relative;
   width: 100%;
@@ -46,35 +46,34 @@ body, html {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  z-index: 10;
 }
 
-/* ข้อความตรงกลาง */
 .center-container {
-  z-index: 10;
   text-align: center;
 }
 
-.title h2.glow-text {
-  font-size: 4rem;
+.title h2 {
+  font-size: clamp(2.5rem, 8vw, 4rem); /* ปรับขนาดตามหน้าจออัตโนมัติ */
   font-weight: 700;
   color: #fff;
   text-transform: uppercase;
   letter-spacing: 5px;
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
 }
 
-.title p.sub-title {
-  font-size: 1.2rem;
+.title p {
+  font-size: 1.1rem;
   color: rgba(255, 255, 255, 0.7);
-  letter-spacing: 10px;
-  margin-top: 10px;
+  letter-spacing: 8px;
+  margin-top: 5px;
 }
 
 /* ปุ่มกดสไตล์ Glass */
 button {
   margin-top: 40px;
-  padding: 15px 40px;
-  font-size: 1.1rem;
+  padding: 14px 35px;
+  font-size: 1rem;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -83,7 +82,7 @@ button {
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   transition: all 0.3s ease;
 }
 
@@ -93,7 +92,7 @@ button:hover {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
-/* วงกลมตามเมาส์ */
+/* แสงวงกลมตามเมาส์ */
 #circle {
   position: fixed;
   width: 300px;
@@ -106,33 +105,11 @@ button:hover {
   transform: translate(-50%, -50%);
 }
 
-/* Theme Toggle */
 .theme-toggle {
   position: absolute;
-  top: 30px;
-  right: 30px;
-  width: 50px;
-  height: 50px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  top: 25px;
+  right: 25px;
   cursor: pointer;
   z-index: 100;
-}
-
-/* Footer */
-footer {
-  position: absolute;
-  bottom: 20px;
-  color: rgba(255, 255, 255, 0.3);
-  font-size: 0.8rem;
-}
-
-/* ปรับแต่งสำหรับมือถือ */
-@media (max-width: 768px) {
-  .title h2.glow-text { font-size: 2.5rem; }
-  .title p.sub-title { font-size: 0.9rem; letter-spacing: 5px; }
+  color: white;
 }
