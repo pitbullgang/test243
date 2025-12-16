@@ -1,26 +1,24 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Phawha</title>
-  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Phawha</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  
-  <video autoplay muted loop id="backgroundVideo">
+  
+  <video autoplay muted loop playsinline id="backgroundVideo">
     <source src="pain.mp4" type="video/mp4">
-    เบราว์เซอร์ของคุณไม่รองรับการเล่นวิดีโอพื้นหลัง
   </video>
 
-    <div id="loading-screen">
-    <div class="loader"></div>
-    <p>Loading...</p>
-  </div>
+  <div id="loading-screen">
+    <div class="loader"></div>
+    <p>Loading...</p>
+  </div>
  
   <div class="main-content">
-
     <div class="theme-toggle" id="themeToggle" title="Toggle Light/Dark Mode">
       <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
         <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79Z"></path>
@@ -39,13 +37,12 @@
     </div>
 
     <canvas id="particleCanvas"></canvas>
-
     <div id="circle"></div>
 
     <div class="center-container">
       <div class="title">
-        <h2 class="gradient-text">Phawha</h2>
-        <p class="gradient-text">MY GANG</p>
+        <h2 class="glow-text">Phawha</h2>
+        <p class="sub-title">MY GANG</p>
       </div>
 
       <button id="memberBtn">
@@ -62,7 +59,6 @@
 
     <audio id="bg-music" autoplay loop></audio>
     <script src="script.js"></script>
-
   </div>
 </body>
 </html>
